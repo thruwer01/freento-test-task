@@ -13,10 +13,12 @@ class Tournament {
 
     private array $pairs;
 
+    private string $dateFormat = "d.m.Y";
+
     public function __construct(string $name, string $startDate = "")
     {
         $this->name = $name;
-        $this->startDate = !empty($startDate) ? $startDate : $this->plusDayFromDate(date('Y-m-d'));
+        $this->startDate = !empty($startDate) ? date($this->dateFormat, strtotime(str_replace('.', '-', $startDate))) : $this->plusDayFromDate(date('Y-m-d'));
     }
 
     public function addPlayer(Player $player): Tournament
@@ -73,7 +75,7 @@ class Tournament {
 
     private function plusDayFromDate(string $date): string
     {
-        return date('Y.m.d', strtotime(str_replace('.', '-', $date) . '+ 1 days'));
+        return date($this->dateFormat, strtotime(str_replace('.', '-', $date) . '+ 1 days'));
     }
 
 }

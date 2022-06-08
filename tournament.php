@@ -63,9 +63,9 @@ class Tournament {
             $temp = array_slice($this->players, $key + 1);
             $eventDate = $this->startDate;
 
-            foreach ($temp as $key2 => $player2)
+            foreach ($temp as $player2)
             {
-                $this->pairs = $this->checkDatesForPlayers($player1->getName(), $player2->getName(), $eventDate);
+                $this->pairs = $this->checkDatesForPlayers($player1->getNameForTournament(), $player2->getNameForTournament(), $eventDate);
             }
         }
         $this->renderPairs();

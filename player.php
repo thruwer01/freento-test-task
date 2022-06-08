@@ -8,7 +8,7 @@ class Player
 
     private string $name;
     
-    private string $city;
+    private string $city = "";
 
     public function __construct($name)
     {
@@ -34,5 +34,8 @@ class Player
         return $this->city;
     }
 
-
+    public function getNameForTournament(): string
+    {
+        return empty($this->getCity()) ? $this->getName() : $this->getName() . " (".$this->getCity().")";
+    }
 }
